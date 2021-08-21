@@ -1,0 +1,5 @@
+{
+    "vim.overrideCopy": false,
+    "vim.useCtrlKeys": false,
+    "typescript.tsdk": "node_modules/typescript/lib"
+}
