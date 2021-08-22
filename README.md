@@ -25,5 +25,5 @@ yarn start
 
 ## screenshot
 
-![alt screenshot](https://imgur.com/u52rR48)
+![alt screenshot](https://i.imgur.com/u52rR48.png)
 
