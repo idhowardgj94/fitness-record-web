@@ -6,25 +6,24 @@ import { Reducer } from 'redux';
 import { ofType } from 'redux-observable';
 import { iif, of } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
+export const INPUT_CHANGE = 'input_change';
 export const VALIDATE = 'validate';
 export const ERROR = 'error';
 export const VALID = 'valid';
-export const INPUT_CHANGE = 'input_change';
 export const _INPUT = 'input';
-const _INPUT_MESSAGE = 'input_message';
 
 // TODO: seperate message and from
-const _formEmpty = (form) => form.repeat === '' && form.weight === '';
+const _formEmpty = (values) => values.repeat === '' && values.weight === '';
 
-const _validateForm = (form) => form.repeat !== '' && form.repeat !== '';
+const _validateForm = (values) => values.repeat !== '' && values.repeat !== '';
 
 const _validateInteger = (input) => !!parseInt(input);
 
-const _validate = (form) => iif(() => 
-    _formEmpty(form) || (
-        _validateForm(form) && 
-        _validateInteger(form.weight) &&
-        _validateInteger(form.repeat)
+const _validate = (values) => iif(() => 
+    _formEmpty(values) || (
+        _validateForm(values) && 
+        _validateInteger(values.weight) &&
+        _validateInteger(values.repeat)
     ), of({ type: VALID }), of({ type: ERROR }));
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,7 +54,7 @@ const _validateMessages = (input): string | false => {
 
 export const validateEpic = (action$, store$) => action$.pipe(
     ofType(VALIDATE),
-    mergeMap(() => _validate(store$.value.message.form)),
+    mergeMap(() => _validate(store$.value.form.values)),
 );
 
 export const inputEpic = (action$) => action$.pipe(
@@ -63,25 +62,23 @@ export const inputEpic = (action$) => action$.pipe(
     map((action: any) => ({ type: _INPUT,  ..._transformInput(action.payload) })),
 );
 
-export interface MessageState {
+export interface FormState {
     validateStatus: typeof ERROR | typeof VALID;
-    form: { weight: string, repeat: string };
+    values: { weight: string, repeat: string };
     message: string | false;
 }
 
-const messageReducer: Reducer<MessageState> = (state: MessageState = { validateStatus: VALID,  form: { weight: '', repeat: '' }, message: false }, action) => {
+const formReducer: Reducer<FormState> = (state: FormState = { validateStatus: VALID,  values: { weight: '', repeat: '' }, message: false }, action) => {
     switch (action.type) {
     case ERROR:
-        return { ...state, validateStatus: ERROR, message: _validateMessages(state.form) };
+        return { ...state, validateStatus: ERROR, message: _validateMessages(state.values) };
     case VALID:
         return {...state, validateStatus: VALID, message: '' };
     case _INPUT:
-        return {...state, form: { ...state.form, ...action.payload } };
-    case _INPUT_MESSAGE:
-        return {...state, message: action.payload };
+        return {...state, values: { ...state.values, ...action.payload } };
     default:
         return state;
     }
 };
 
-export default messageReducer;
+export default formReducer;

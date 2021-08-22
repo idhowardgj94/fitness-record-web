@@ -1,13 +1,16 @@
 import { combineEpics } from 'redux-observable';
 import { combineReducers } from 'redux';
-import message, { inputEpic, validateEpic } from './Form/message';
+import form, { inputEpic, validateEpic } from './form';
+import rm, { calculateEpic } from './rm';
 export const rootEpic = combineEpics(
     validateEpic,
     inputEpic,
+    calculateEpic,
 );
 
 export const rootReducer = combineReducers({
-    message,
+    form,
+    rm,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

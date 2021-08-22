@@ -17,6 +17,7 @@ color: whitesmoke;
 `;
 export const Display = styled.section`
 width: 100%;
+justify-content: center;
 background-color: #124653;
 min-height: 200px;
 padding: 1em 1em 1em 1em;
@@ -33,17 +34,34 @@ border-width: 0px;
 `;
 
 export const InputGroup = styled.div`
-display: block;
+display: flex;
+margin: 0 auto;
+justify-content: center;
+width: 100%;
 margin: 2em 0;
 `;
 
 export const Input = styled.input`
 background-color: #fee074;
 border-radius: 0.5em;
-height: 30px;
+height: 40px;
+width: 400px;
 `;
 
 export const Alert = styled.div`
 color: #fe8d8f;
+font-size: 1.2em;
 margin-bottom: 1em;
+text-align: center;
+`;
+
+export const Table = styled.table`
+width: 100%;
+text-align: center;
+`;
+export const Row = styled.tr`
+height: 50px;
+&:nth-child(even) {
+    background-color: #dddddd;
+}
 `;

@@ -1,46 +1,29 @@
-# Getting Started with Create React App
+# RM calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is just an example of redux & redux observable, aim to practice and sharing concept.
 
-## Available Scripts
+## background
 
-In the project directory, you can run:
+'RM' stand for One-repetition maximum. it used wildly in weight lifting and fitness training world.
 
-### `yarn start`
+acording to [wiki](https://en.wikipedia.org/wiki/One-repetition_maximum), 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> One-repetition maximum (one rep maximum or 1RM) in weight training is the maximum amount of weight that a person can possibly lift for one repetition. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+One can schedule his/her workout plan, after knowing what the RM value is.
 
-### `yarn test`
+in this project, we use the simplest formula, aka ***Epley formula***.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Run this App
 
-### `yarn build`
+you can run this app use follow command:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```shell
+yarn
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## screenshot
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![alt screenshot](https://imgur.com/u52rR48)
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
